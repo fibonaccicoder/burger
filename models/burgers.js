@@ -1,29 +1,39 @@
-// Import the ORM to create functions that will interact with the database.
-var orm = require("../config/orm.js");
+$(function () {
+    $(".newBurger").on("submit", function (event) {
+        event.preventDefault();
 
-var burger = {
-    all: function (cb) {
-        orm.all("burgers", function (res) {
-            cb(res);
-        });
-    },
-    // The variables cols and vals are arrays.
-    create: function (cols, vals, cb) {
-        orm.create("burgers", cols, vals, function (res) {
-            cb(res);
-        });
-    },
-    update: function (objColVals, condition, cb) {
-        orm.update("burgers", objColVals, condition, function (res) {
-            cb(res);
-        });
-    },
-    delete: function (condition, cb) {
-        orm.delete("burgers", condition, function (res) {
-            cb(res);
-        });
-    }
-};
+        var newBurger = {
+            burger_name: $("#newBurgerData").val().trim(),
+            devoured: 0
+            //sets default to false
+        };
 
-// Export the database functions for the controller (catsController.js).
-module.exports = burger;
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function () {
+                console.log("You've added a burger!");
+                location.reload();
+            }
+        );
+    });
+
+    //when devour button is clicked, burger changes to true on devoured 
+    $(".devour").on("click", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var isDevoured = {
+            devoured: 1
+        }
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: isDevoured
+        }).then(
+            function () {
+                console.log("You devoured that burger like a beast");
+                location.reload();
+            }
+        )
+    })
+});
