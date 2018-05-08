@@ -1,18 +1,16 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-10">
-            <h1>BURGERZON !</h1>
-        </div>
-        <div class="col-md-1">
-        </div>
+    <div class="jumbotron">
+        <h1>Vegan Burgers!</h1>
+        <p>Your source for cruelty free, delicious burgers!</p>
+        <br>
     </div>
+
+
     <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-2">
         </div>
-        <div class="col-md-5">
-            <h2>Burgers Available: </h2>
+        <div class="col-md-4">
+            <h2>Vegan Burgers Available: </h2>
             {{#each burgers}} {{#unless devoured}}
             <div class="row">
                 <div class="col-md-8 burgerListing">
@@ -24,34 +22,21 @@
             </div>
             {{/unless}} {{/each}}
         </div>
-        <div class="col-md-5">
-            <h2>Out of stock burgers: </h2>
-            {{#each burgers}} {{#if devoured}}
-            <div class="row">
-                <div class="col-md-8">
-                    {{this.id}}. {{this.burger_name}}
-                </div>
+
+
+        <div class="row">
+            <div class="col-md-2">
             </div>
-            {{/if}} {{/each}}
-        </div>
-        <div class="col-md-1">
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-            <form class="newBurger">
-                <div class="form-group">
-                    <label for="textEntry">Add a burger option</label>
-                    <textarea class="form-control" id="newBurgerData"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-        <div class="col-md-4">
+            <div class="col-md-4">
+                <form class="newBurger">
+                    <div class="form-group">
+                        <label for="textEntry">Add a burger option</label>
+                        <textarea class="form-control" id="newBurgerData"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+            </div>
         </div>
     </div>
-</div>

@@ -26,7 +26,7 @@ var orm = {
         })
     },
 
-    //code to update item on list
+    //code to update individual item on list
     updateOne: function (table, devoured, id, callback) {
         var queryString = "UPDATE " + table + " SET devoured = ? WHERE id = ?";
         connection.query(queryString, [devoured, id], function (err, result) {
